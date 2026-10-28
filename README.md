@@ -23,5 +23,9 @@ PRINT x
 
 ## Project Status
 🚧 Work in Progress
+### FuturenImprovements
+input command
+IF/ELSE conditions
+Loops
 
 More features and improvements are planned.
