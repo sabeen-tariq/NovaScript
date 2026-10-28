@@ -54,28 +54,45 @@ void executeLine(const string& line) {
         variables[name] = result;
     }
     else if (command == "PRINT") {
-        ss >> a;
+    string remaining;
+    getline(ss, remaining);
 
-        if (a.empty())
-            throw runtime_error("Usage: PRINT value");
+    size_t start = remaining.find_first_not_of(" \t");
 
-        int result = getValue(a);
+    if (start == string::npos)
+        throw runtime_error("Usage: PRINT value");
 
-        if (ss >> op >> b) {
-            int y = getValue(b);
+    remaining = remaining.substr(start);
 
-            if (op == "+") result += y;
-            else if (op == "-") result -= y;
-            else if (op == "*") result *= y;
-            else if (op == "/" && y != 0) result /= y;
-            else if (op == "/" && y == 0)
-                throw runtime_error("Division by zero");
-            else
-                throw runtime_error("Unknown operator");
-        }
-
-        cout << result << '\n';
+    if (remaining.size() >= 2 &&
+        remaining.front() == '"' &&
+        remaining.back() == '"') {
+        cout << remaining.substr(1, remaining.size() - 2) << '\n';
+        return;
     }
+
+    ss.clear();
+    ss.str(remaining);
+
+    ss >> a;
+
+    int result = getValue(a);
+
+    if (ss >> op >> b) {
+        int y = getValue(b);
+
+        if (op == "+") result += y;
+        else if (op == "-") result -= y;
+        else if (op == "*") result *= y;
+        else if (op == "/" && y != 0) result /= y;
+        else if (op == "/" && y == 0)
+            throw runtime_error("Division by zero");
+        else
+            throw runtime_error("Unknown operator");
+    }
+
+    cout << result << '\n';
+}
     else {
         throw runtime_error("Unknown command: " + command);
     }
