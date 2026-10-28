@@ -97,9 +97,13 @@ void executeLine(const string& line) {
         throw runtime_error("Unknown command: " + command);
     }
 }
+void resetVariables() {
+    variables.clear();
+}
 
 int main(int argc, char* argv[]) {
-    cout << "NovaScript Interpreter v1.1\n";
+    resetVariables();
+    cout << "NovaScript Interpreter v1.2\n";
 
     if (argc > 1) {
         ifstream file(argv[1]);

@@ -3,4 +3,13 @@ LET y = 20
 PRINT x + y
 PRINT x
 PRINT "Hello NovaScript!"
+PRINT 100
+LET z = 50 
+PRINT z * 2
+LET a = 10
+LET b = 5
+PRINT a - b 
+LET a = 10
+LET b = 0
+PRINT a / b
 
