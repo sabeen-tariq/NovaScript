@@ -9,7 +9,5 @@ PRINT z * 2
 LET a = 10
 LET b = 5
 PRINT a - b 
-LET a = 10
-LET b = 0
-PRINT a / b
+
 

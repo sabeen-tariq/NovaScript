@@ -50,7 +50,8 @@ void executeLine(const string& line) {
             else
                 throw runtime_error("Unknown operator");
         }
-
+      if (variables.count(name))
+       throw runtime_error("Variable already exit: " + name );
         variables[name] = result;
     }
     else if (command == "PRINT") {
