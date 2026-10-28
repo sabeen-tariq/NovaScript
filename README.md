@@ -7,6 +7,8 @@ NovaScript is a simple programming language interpreter built using C++.
 - Basic arithmetic operations
 - Print statements
 - Command-line interface
+  Duplicate variable detection
+  Division-by-zero error handling
 
 ## Example Code
 
